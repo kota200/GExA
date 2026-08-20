@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Grass Expression Atlas - Main</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .header-left {
+      min-width: 0;
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      white-space: nowrap;
+      margin-top: 0;
+    }
+
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
+    
+    .top-nav a.current {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 16px auto 40px;
+      padding: 16px 20px 24px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .intro {
+      font-size: 20px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 18px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .crop-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 8px;
+    
+    }
+
+    .crop-card {
+      flex: 1 1 220px;
+      min-width: 220px;
+      max-width: 260px;
+      background: #fafafa;
+      border-radius: 10px;
+      padding: 12px 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.07s ease-out, box-shadow 0.07s ease-out;
+    }
+
+    .crop-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    }
+
+    .crop-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .crop-desc {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .crop-image {
+      width: 100%;
+      max-height: 140px;      /* カード内に収まるように高さ制限 */
+      object-fit: cover;      /* カードの幅に合わせてトリミング */
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .crop-caption {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .crop-link {
+      align-self: center;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #3498db;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .crop-link:hover {
+      background: #2980b9;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        margin: 10px;
+        padding: 12px;
+      }
+      .crop-card {
+        flex: 1 1 100%;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-nav {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <h1>GExA—Grass Expression Atlas</h1>
+    <p>
+      An interactive RNA-seq expression atlas integrating public datasets for grass species.
+    </p>
+  </div>
+
+  <nav class="top-nav" aria-label="Primary">
+    <a class="current" href="index.html">Home</a>
+    <a href="Help/index.html">Help</a>
+    <a href="Download/index.html">Download</a>
+    <a href="About/index.html">About</a>
+  </nav>
+</header>
+
+<div class="container">
+  <p class="intro">
+    Select a crop below to explore its expression atlas.<br>
+  </p>
+
+  <div class="crop-grid">
+    <!-- Pearl millet -->
+    <div class="crop-card">
+      <div>
+        <div class="crop-name">Pearl millet
+        (<i>Cenchrus americanus</i>)</div>
+        <div class="crop-desc">
+          <img src="images/pearl_millet.jpg"
+               alt="Pearl millet plants growing in the field"
+               class="crop-image">
+          <div class="crop-caption">
+            987 samples from 43 projects
+        </div>
+      </div>
+      </div>
+      <a class="crop-link" href="PM/PM.html">Open Pearl Millet expression atlas</a>
+    </div>
+
+    <!-- Foxtail millet -->
+    <div class="crop-card">
+      <div>
+        <div class="crop-name">Foxtail millet (<i>Setaria italica</i>)</div>
+        <div class="crop-desc">
+          <img src="images/foxtail_millet.jpg"
+               alt="Foxtail millet plants growing in the field"
+               class="crop-image">
+          <div class="crop-caption">
+            2216 samples from 211 projects
+          </div>
+        </div>
+      </div>
+      <a class="crop-link" href="SI/SI.html">Open Foxtail Millet expression atlas</a>
+    </div>
+    
+    <!-- Proso millet -->
+    <div class="crop-card">
+      <div>
+        <div class="crop-name">Proso millet (<i>Panicum miliaceum</i>)</div>
+        <div class="crop-desc">
+          <img src="images/proso.jpg"
+               alt="Proso millet plants growing in the field"
+               class="crop-image">
+          <div class="crop-caption">
+           737 samples from 27 projects
+        </div>
+        </div>
+      </div>
+      <a class="crop-link" href="Pmi/Pmi.html">Open Proso Millet expression atlas</a>
+    </div>
+    
+    
+    <!-- Finger millet -->
+    <div class="crop-card">
+      <div>
+        <div class="crop-name">Finger millet (<i>Eleusine coracana</i>)</div>
+        <div class="crop-desc">
+          <img src="images/finger_millet.jpg"
+               alt="Finger millet plants growing in the field"
+               class="crop-image">
+          <div class="crop-caption">
+           117 samples from 20 projects 
+        </div>
+      </div>
+      </div>
+      <a class="crop-link" href="EC/EC.html">Open Finger Millet expression atlas</a>
+    </div>
+
+    
+    <!-- Sorghum -->
+    <div class="crop-card">
+      <div>
+        <div class="crop-name">Sorghum (<i>Sorghum bicolor</i>)</div>
+        <div class="crop-desc">
+          <img src="images/sorghum.jpg"
+               alt="Sorghum plants growing in the field"
+               class="crop-image">
+          <div class="crop-caption">
+         271 samples from 114 projects
+        </div>
+        </div>
+      </div>
+      <a class="crop-link" href="SB/SB.html">Open Sorghum expression atlas</a>
+    </div>
+
+    <!-- Barley -->
+    <div class="crop-card">
+      <div>
+        <div class="crop-name">Barley (<i>Hordeum vulgare</i>)</div>
+        <div class="crop-desc">
+          <img src="images/barley.jpg"
+               alt="Barley plants growing in the field"
+               class="crop-image">
+          <div class="crop-caption">
+            345 samples from 27 projects
+          </div>
+        </div>
+      </div>
+      <a class="crop-link" href="HV/HV.html">Open Barley expression atlas</a>
+    </div>
+
+    <!-- Rice -->
+    <div class="crop-card">
+      <div>
+        <div class="crop-name">Rice (<i>Oryza sativa</i>)</div>
+        <div class="crop-desc">
+          <img src="images/rice.jpg"
+               alt="Rice plants growing in the field"
+               class="crop-image">
+          <div class="crop-caption">
+            80 samples from 15 projects
+          </div>
+        </div>
+      </div>
+      <a class="crop-link" href="OS/OS.html">Open Rice expression atlas</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+This database was constructed in the Tsugama Laboratory (<a href="https://park.itc.u-tokyo.ac.jp/lgpr/index.html">https://park.itc.u-tokyo.ac.jp/lgpr/index.html</a>).
+</footer>
+
+</body>
+</html>
