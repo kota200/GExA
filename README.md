@@ -8,6 +8,7 @@ This repository includes the source files used to build and operate the GExA web
 
 * HTML, CSS, and JavaScript files
 * Shard files used by the web application
+* Other files required for GExA
 
 Large data files, including expression matrices and annotation files, are not included in this repository.
 
