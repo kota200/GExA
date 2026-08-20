@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grass Expression Atlas - Help</title>
+  <style>
+body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 14px 24px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 16px auto 40px;
+      padding: 16px 20px 24px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .intro {
+      font-size: 20px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 18px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .crop-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 8px;
+    
+    }
+
+    .crop-card {
+      flex: 1 1 220px;
+      min-width: 220px;
+      max-width: 260px;
+      background: #fafafa;
+      border-radius: 10px;
+      padding: 12px 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.07s ease-out, box-shadow 0.07s ease-out;
+    }
+
+    .crop-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    }
+
+    .crop-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .crop-desc {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .crop-image {
+      width: 100%;
+      max-height: 140px;      /* カード内に収まるように高さ制限 */
+      object-fit: cover;      /* カードの幅に合わせてトリミング */
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .crop-caption {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+
+    .crop-link {
+      align-self: flex-start;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #3498db;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .crop-link:hover {
+      background: #2980b9;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        margin: 10px;
+        padding: 12px;
+      }
+      .crop-card {
+        flex: 1 1 100%;
+      }
+    }
+
+
+    /* --- Top navigation (Home / Help / Download) --- */
+    header{
+      background:#2c3e50;
+      color:#fff;
+      padding:14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .header-left{
+      min-width: 0;
+    }
+    .top-nav{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      white-space: nowrap;
+      margin-top:0;
+    }
+    .top-nav a{
+      color:#fff;
+      text-decoration:none;
+      font-size:16px;   
+      font-weight:700;
+      opacity:.95;
+    }
+    .top-nav a:hover{
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .top-nav a.current{
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* --- Help content --- */
+    .page-title{
+      margin: 4px 0 6px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .lead{
+      margin: 0 0 14px;
+      color: #444;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .toc{
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 10px 0 18px;
+    }
+    .toc h2{
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+    .toc ul{
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    h2.section{
+      margin: 22px 0 10px;
+      font-size: 18px;
+      border-left: 5px solid #2c3e50;
+      padding-left: 10px;
+    }
+    h3.sub{
+      margin: 12px 0 6px;
+      font-size: 15px;
+    }
+    .note{
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 10px 0 14px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .note strong{ font-weight: 800; }
+    .steps{
+      margin: 8px 0 0;
+      padding-left: 22px;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+    .steps li{
+      margin: 6px 0;
+    }
+    code{
+      background: #f3f3f3;
+      border: 1px solid #e6e6e6;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.95em;
+    }
+    .grid2{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 10px 0 6px;
+    }
+    .card{
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 12px 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .card h3{
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+    .card p{
+      margin: 0;
+      color: #444;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .small{
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    a{ color: #2c3e50; }
+    a:hover{ text-decoration: underline; }
+
+
+
+    /* --- Representative example section --- */
+    .example-intro{
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 12px 0 16px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .example-intro p{
+      margin: 0;
+      color: #444;
+    }
+    .example-block{
+      margin: 18px 0 26px;
+    }
+    .example-block h2.section{
+      margin-top: 18px;
+    }
+    .example-figure{
+      margin: 14px 0 16px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .example-figure img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+    }
+    .example-figure figcaption{
+      margin-top: 8px;
+      color: #555;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .example-result{
+      background: #f8fbfd;
+      border-left: 5px solid #3498db;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 12px 0 4px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    @media (max-width: 780px){
+      .grid2{ grid-template-columns: 1fr; }
+      .top-nav{ width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="header-left">
+    <h1>GExA—Grass Expression Atlas</h1>
+    <p>Learn how to search genes and visualize TPM distributions with flexible grouping and filtering.</p>
+  </div>
+
+  <!-- Top-right navigation (same behavior as the Home page header links) -->
+  <nav class="top-nav" aria-label="Primary">
+    <a href="../index.html">Home</a>
+    <a class="current" href="../Help/index.html">Help</a>
+    <a href="../Download/index.html">Download</a>
+    <a href="../About/index.html">About</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="page-title">Manual</div>
+  <p class="lead">
+    Instructions for how to use the RNA-seq database (e.g., <a href="../PM/PM.html">Pearl millet</a>)
+    to search genes and visualize their expression profiles across samples and conditions.
+  </p>
+
+  <div class="toc">
+    <h2>Contents</h2>
+    <ul>
+      <li><a href="#what-you-need">What you need</a></li>
+      <li><a href="#page-layout">Page layout</a></li>
+      <li><a href="#step-by-step">Step-by-step workflow</a></li>
+      <li><a href="#multi-gene">Multi-gene and annotation search</a></li>
+      <li><a href="#filters-transform">Filters and transformations</a></li>
+      <li><a href="#table">Data table and point selection</a></li>
+      <li><a href="#similarity">High-similarity genes in other cultivars (Pearl millet)</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#example-of-use">Example of use</a></li>
+    </ul>
+  </div>
+
+  <h2 id="what-you-need" class="section">What you need</h2>
+  <div class="note">
+    <strong>Minimum requirement:</strong> A Gene ID or gene annotation keywords
+    (based on BLASTP homology searches against rice/Arabidopsis proteins).
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Gene ID</h3>
+      <p>Enter a gene identifier such as <code>dpcaXXXX</code>. You can input multiple Gene IDs separated by spaces or commas.</p>
+    </div>
+    <div class="card">
+      <h3>Annotation keywords</h3>
+      <p>Type keywords (e.g., a protein name). Genes whose homology-based annotations (from rice/Arabidopsis BLASTP searches) contain the keyword will be listed and plotted (up to 500 genes).</p>
+    </div>
+  </div>
+
+  <h2 id="page-layout" class="section">Page layout</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Control panel (top)</h3>
+      <p>
+        Choose <code>Reference genome cultivar</code>, input <code>Gene ID or annotation</code>,
+        set <code>Group by</code>, and configure options such as
+        <code>Use regex</code>, <code>Convert to log10(TPM + 1)</code>,
+        and the sample keyword filter.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Plot area (middle)</h3>
+      <p>
+        Expression is shown as an interactive Plotly violin plot.
+        Use the Plotly toolbar (zoom/pan/reset/download as PNG) directly on the figure.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Data table (bottom)</h3>
+      <p>
+        The table shows the sample metadata and the expression value (TPM, and optionally log-transformed).
+        Clicking a point in the plot highlights the corresponding row.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Similarity panel (<a href="../PM/PM.html">Pearl millet</a>)</h3>
+      <p>
+        For Pearl millet, when the reference genome cultivar is set, a panel lists
+        high-similarity genes in other cultivars and lets you open their expression plots.
+      </p>
+    </div>
+  </div>
+
+  <h2 id="step-by-step" class="section">Step-by-step workflow</h2>
+  <ol class="steps">
+    <li>
+      <strong>Open a crop page.</strong> For example, go to the <a href="../PM/PM.html">Pearl millet page</a>.
+      (Other crops are available from the Home page.)
+    </li>
+    <li>
+      <strong>Select the reference genome cultivar</strong> using the <code>Reference genome cultivar</code> dropdown.
+      The page will automatically move to the corresponding dataset/page.
+    </li>
+    <li>
+      <strong>Enter a Gene ID or annotation keywords</strong> in the input box.
+      If you type a Gene ID, autocomplete suggestions may appear.
+    </li>
+    <li>
+      <strong>(Optional) Use regex for Gene ID search.</strong>
+      Check <code>Use regex (Gene ID search)</code> or input a regex using <code>/.../flags</code>
+      (e.g., <code>/^dpca1g000*.840/i</code>).
+    </li>
+    <li>
+      <strong>Choose the grouping variable</strong> with <code>Group by</code>
+      (e.g., <code>tissue</code>, <code>treatment</code>, <code>stage</code>, <code>cultivar</code>,
+      or <code>Show all samples (not grouping)</code>).
+    </li>
+    <li>
+      <strong>Set optional display options</strong> such as
+      <code>Convert to log10(TPM + 1)</code>.
+    </li>
+    <li>
+      <strong>Click <code>Generate plot</code>.</strong> The plot and table will update.
+    </li>
+    <li>
+      <strong>Explore interactively.</strong>
+      Hover points for metadata and expression; zoom/pan using the Plotly toolbar.
+    </li>
+  </ol>
+
+  <h2 id="multi-gene" class="section">Multi-gene and annotation search</h2>
+  <div class="note">
+    <strong>Multiple Gene IDs:</strong> you can enter multiple IDs separated by spaces or commas
+    (e.g., <code>dpcaXXXX dpcaYYYY</code>). Each gene will be plotted.
+    <br><br>
+    <strong>Annotation keywords:</strong> when you search by annotation, the page finds genes whose annotation text
+    contains all provided keywords (AND search), lists them under <em>Matched genes</em>, and plots them together (up to 500 genes).
+  </div>
+
+  <h2 id="filters-transform" class="section">Filters and transformations</h2>
+  <div class="note">
+  <h3 class="sub">Log transform</h3>
+  <p class="lead">
+    Enable <code>Convert to log10(TPM + 1)</code> to reduce the effect of highly expressed outliers.
+    Both the plot axis and the data table will reflect this choice.
+  </p>
+  
+  <h3 class="sub">Keyword filter for samples</h3>
+  <p class="lead">
+    Enable <code>Enable keyword filter for samples</code>, then type keywords into <code>Search key words</code>.
+    Samples are kept only if their metadata contains <em>all</em> keywords (AND search; space-separated).
+    Press <kbd>Enter</kbd> to redraw the plot.
+  </p>
+  </div>
+  <h2 id="table" class="section">Data table and point selection</h2>
+  <div class="note">
+    The table section (<em>Data used for the plot</em>) shows the metadata and expression values used in the current plot.
+    When multiple genes are plotted, choose the gene displayed in the table using <code>Gene for table</code>.
+    <br><br>
+    <strong>Tip:</strong> Click any point in the plot to highlight the corresponding table row.
+    </div>
+
+  <h2 id="similarity" class="section">High-similarity genes in other cultivars (Pearl millet)</h2>
+  <div class="note">
+  <p class="lead">
+    On the <a href="../PM/PM.html">Pearl millet page</a>, when the reference genome cultivar is set, the
+    <em>High sequence similarity genes in other cultivars</em> panel appears.
+    After plotting a gene, you can pick the base gene (if multiple genes are plotted) and the panel lists
+    corresponding high-similarity genes in other cultivars.
+    Clicking a listed gene to plot it.
+  </p>
+  </div>
+
+
+  <h2 id="troubleshooting" class="section">Troubleshooting</h2>
+  <ul class="steps">
+    <li><strong>“Now loading…” stays for a long time:</strong> please reload the page. Large datasets may take time to fetch on the first access.</li>
+    <li><strong>No matched genes:</strong> confirm the Gene ID format, or try fewer/more general annotation keywords.</li>
+    <li><strong>Annotation search does not work:</strong> annotation file may not be available for that crop; try Gene ID search instead.</li>
+    <li><strong>Nothing changes after keywords:</strong> after enabling the keyword filter, press <kbd>Enter</kbd> or click <code>Generate plot</code> again.</li>
+  </ul>
+
+  <div class="note">
+    For downloadable files (TPM matrices, gene counts, annotations), please visit the
+    <a href="../Download/index.html">Download page</a>.
+  </div>
+
+</div>
+
+<div class="container" id="example-of-use">
+  <div class="page-title">Example of use</div>
+  <p class="lead">
+    How GExA can be used to query genes, visualize expression profiles,
+    inspect sample-level metadata, and compare candidate genes identified by homology-based annotation search.
+  </p>
+
+  <div class="example-block">
+    <h2 class="section">Example 1. Querying a pearl millet gene by Gene ID</h2>
+    <div class="example-intro">
+      <p>
+        This example examines the pearl millet gene <code>dpca1g022930.840</code>. It is the closest homolog of rice <em>HVA22</em> (<code>LOC_Os11g30500</code>), and it has been
+        reported as a dehydration- and abscisic acid (ABA)-responsive gene in pearl millet (Qazi et al., 2025).
+      </p>
+    </div>
+
+    <figure class="example-figure">
+      <img src="example_use_figure1.png" alt="GExA workflow for querying the pearl millet gene dpca1g022930.840 by Gene ID">
+      <figcaption>
+        <strong>Figure 1.</strong> Basic workflow for querying a known pearl millet Gene ID in GExA.
+        (A) Open the pearl millet expression atlas from the Home page. (B) Select the reference genome cultivar.
+        (C) Enter the Gene ID and choose a metadata category. (D) Generate an expression plot grouped by the selected category. Samples labeled "NA" have unavailable or unassignable metadata. You can show or hide these samples by clicking "NA" in the plot legend.
+        (E) Open the linked TGIF-DB page to view detailed gene information. (F) Click individual points to inspect sample-level metadata.
+      </figcaption>
+    </figure>
+
+    <ol class="steps">
+      <li>
+        Open the pearl millet expression atlas by clicking <strong>Open pearl millet expression atlas</strong> on the Home page (Fig. 1A).
+      </li>
+      <li>
+        Select the reference genome cultivar. Because <code>dpca1g022930.840</code> is a Gene ID from the Tift genome,
+        choose <strong>Tift</strong> as the reference genome cultivar (Fig. 1B).
+      </li>
+      <li>
+        Enter <code>dpca1g022930.840</code> in the Gene ID field. To examine whether the gene is induced under specific conditions,
+        select <strong>treatment</strong> as the metadata category for grouping (Fig. 1C).
+      </li>
+      <li>
+        Click the <strong>Generate plot</strong> button. An interactive plot is displayed in which the x-axis represents treatment categories
+        and the y-axis represents expression level in TPM (Fig. 1C and 1D).
+      </li>
+      <li>
+        Click the Gene ID above the plot to open TGIF-DB and view detailed information for the selected gene (Fig. 1E).
+      </li>
+      <li>
+        Click a legend item to show or hide the corresponding category in the plot. For example, categories such as
+        <code>NA</code> (unavailable or unassignable metadata) can be hidden when they are not relevant to the current comparison (Fig. 1D).
+      </li>
+      <li>
+        Click an individual point in the plot to display the corresponding sample information in the table below the plot (Fig. 1F).
+      </li>
+    </ol>
+
+  </div>
+
+  <div class="example-block">
+    <h2 class="section">Example 2. Searching genes by annotation keyword</h2>
+    <div class="example-intro">
+      <p>
+        GExA can also be used when a specific Gene ID is not known. By entering an annotation keyword such as
+        <code>HVA22</code>, users can identify genes whose homology-based annotations, derived from rice and/or
+        Arabidopsis genes, contain the keyword. And then their expression profiles are visualized on the same page.
+      </p>
+    </div>
+
+    <figure class="example-figure">
+      <img src="example_use_figure2.png" alt="GExA workflow for searching pearl millet genes by the annotation keyword HVA22">
+      <figcaption>
+        <strong>Figure 2.</strong> Annotation keyword search in GExA.
+        (A) Enter an annotation keyword, such as <code>HVA22</code>, and list genes whose homology-based rice/Arabidopsis annotations
+        contain the keyword. (B) Expression patterns of the matched genes. These plots are shown on the same page for direct comparison. 
+      </figcaption>
+    </figure>
+
+    <ol class="steps">
+      <li>
+        Enter <code>HVA22</code> in the annotation keyword field and click the <strong>Generate plot</strong> button (Fig. 2A).
+      </li>
+      <li>
+        Pearl millet genes are listed whose homology-based annotations, inferred from rice and/or Arabidopsis genes,
+        contain the keyword <code>HVA22</code> in the associated annotation or gene name (Fig. 2A).
+      </li>
+      <li>
+        The matched genes are plotted together on the same page, allowing users to compare their expression patterns across
+        the selected metadata category (Fig. 2B).
+      </li>
+    </ol>
+  </div>
+</div>
+
+<footer>
+This database was constructed in the Tsugama Laboratory (<a href="https://park.itc.u-tokyo.ac.jp/lgpr/index.html">https://park.itc.u-tokyo.ac.jp/lgpr/index.html</a>).
+</footer>
+
+</body>
+</html>

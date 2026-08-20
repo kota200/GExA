@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grass Expression Atlas - About</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left {
+      min-width: 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      white-space: nowrap;
+      margin-top: 0;
+    }
+
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+
+    .top-nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .top-nav a.current {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 16px auto 40px;
+      padding: 16px 20px 24px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .page-title {
+      margin: 4px 0 10px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #222;
+    }
+
+    .lead {
+      margin: 0 0 14px;
+      color: #444;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .lead:last-child {
+      margin-bottom: 0;
+    }
+
+    .note {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 10px 0 14px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .summary-card {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .summary-card h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      color: #2c3e50;
+    }
+
+    .summary-card p {
+      margin: 0;
+      color: #444;
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+
+
+    .database-summary-intro {
+      margin: 0 0 12px;
+      color: #444;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .database-summary-table {
+      width: 100%;
+      min-width: 920px;
+      border-collapse: collapse;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .database-summary-table th,
+    .database-summary-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+      text-align: right;
+      vertical-align: top;
+      line-height: 1.45;
+    }
+
+    .database-summary-table thead th {
+      background: #2c3e50;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      white-space: normal;
+    }
+
+    .database-summary-table tbody th {
+      background: #fafafa;
+      color: #2c3e50;
+      font-weight: 700;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .database-summary-table tbody tr:last-child th,
+    .database-summary-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .database-summary-table tbody tr:hover th,
+    .database-summary-table tbody tr:hover td {
+      background: #f7f9fb;
+    }
+
+    .database-summary-table .pending {
+      color: #999;
+      font-style: italic;
+    }
+
+    .table-note {
+      margin: 10px 0 0;
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* --- RAP-DB-like development team section --- */
+    .team-title {
+      margin: 4px 0 24px;
+      font-size: 32px;
+      font-weight: 800;
+      color: #b88a00;
+      line-height: 1.2;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 32px;
+      align-items: start;
+    }
+
+    .team-column {
+      min-width: 0;
+    }
+
+    .team-role {
+      margin-bottom: 14px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #7f8fa3;
+      line-height: 1.2;
+    }
+
+    .team-member {
+      font-size: 16px;
+      color: #14284b;
+      line-height: 1.65;
+    }
+
+    .small {
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #2c3e50;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      margin: 0 12px 16px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 780px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .top-nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .container {
+        margin: 10px;
+        padding: 12px;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="header-left">
+    <h1>GExA—Grass Expression Atlas</h1>
+    <p>About GExA</p>
+  </div>
+
+  <nav class="top-nav" aria-label="Primary">
+    <a href="../index.html">Home</a>
+    <a href="../Help/index.html">Help</a>
+    <a href="../Download/index.html">Download</a>
+    <a class="current" href="../About/index.html">About</a>
+  </nav>
+</header>
+
+<main>
+  <section class="container">
+    <div class="page-title">What is GExA?</div>
+    <p class="lead">
+      <strong>Grass Expression Atlas (GExA)</strong> is an interactive web-based resource for rapid exploration of gene expression across diverse tissues, developmental stages, and conditions in grass species.
+    </p>
+    <p class="lead">
+      GExA provides standardized RNA-seq expression profiles and enables users to visualize expression patterns of genes of interest through an interactive web interface.
+    </p>
+
+    <div class="summary-grid" aria-label="Summary of GExA contents">
+      <div class="summary-card">
+        <h3>Covered species</h3>
+        <p>Pearl millet, foxtail millet, proso millet, finger millet, barley,sorghum, and rice</p>
+      </div>
+      <div class="summary-card">
+        <h3>Main functions</h3>
+        <p>Interactive visualization of gene expression patterns across tissues, developmental stages, treatments, and cultivars</p>
+      </div>
+      <div class="summary-card">
+        <h3>Data source</h3>
+        <p>Publicly available RNA-seq datasets processed and curated metadata</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="page-title">GExA summary</div>
+    <p class="database-summary-intro">
+      The number of retained RNA-seq samples, searchable metadata annotations, BioProjects, genes, and reference genomes currently included in GExA.
+    </p>
+
+    <div class="table-wrap" aria-label="Database summary table">
+      <table class="database-summary-table">
+        <thead>
+        <tr>
+          <th scope="col">Species</th>
+          <th scope="col">Total retained samples</th>
+          <th scope="col">Samples with tissue metadata</th>
+          <th scope="col">Samples with treatment metadata</th>
+          <th scope="col">Samples with developmental stage metadata</th>
+          <th scope="col">Samples with cultivar metadata</th>
+          <th scope="col">Total BioProjects</th>
+          <th scope="col">Number of genes</th>
+          <th scope="col">Number of reference genomes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Pearl millet</th>
+          <td>987</td>
+          <td>951</td>
+          <td>367</td>
+          <td>494</td>
+          <td>619</td>
+          <td>43</td>
+          <td>Tift: 36,510<br>
+ICMB 843: 38,069<br>
+ICMR 06777: 35,036</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">Foxtail millet</th>
+          <td>2,216</td>
+          <td>1,719</td>
+          <td>234</td>
+          <td>1,241</td>
+          <td>1,470</td>
+          <td>211</td>
+          <td>30,123</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th scope="row">Proso millet</th>
+          <td>737</td>
+          <td>661</td>
+          <td>60</td>
+          <td>491</td>
+          <td>243</td>
+          <td>27</td>
+          <td>63,678</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th scope="row">Finger millet</th>
+          <td>117</td>
+          <td>76</td>
+          <td>32</td>
+          <td>44</td>
+          <td>67</td>
+          <td>20</td>
+          <td>48,836</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th scope="row">Sorghum</th>
+          <td>271</td>
+          <td>122</td>
+          <td>73</td>
+          <td>60</td>
+          <td>254</td>
+          <td>114</td>
+          <td>34,118</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th scope="row">Barley</th>
+          <td>345</td>
+          <td>70</td>
+          <td>9</td>
+          <td>30</td>
+          <td>144</td>
+          <td>27</td>
+          <td>35,826</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th scope="row">Rice</th>
+          <td>80</td>
+          <td>74</td>
+          <td>6</td>
+          <td>63</td>
+          <td>69</td>
+          <td>15</td>
+          <td>55,986</td>
+          <td>1</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <section class="container">
+    <div class="page-title">GExA development team</div>
+
+    <div class="team-grid">
+      <div class="team-column">
+        <div class="team-role">PI</div>
+        <div class="team-member">Daisuke Tsugama</div>
+      </div>
+
+      <div class="team-column">
+        <div class="team-role">Developers</div>
+        <div class="team-member">Kota Kambara</div>
+        <div class="team-member">Chen Qi</div>
+      </div>
+
+      <div class="team-column">
+        <div class="team-role">Data curator</div>
+        <div class="team-member">Daisuke Tsugama</div>
+        <div class="team-member">Kota Kambara</div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="page-title">Update policy</div>
+    <p class="lead">
+      GExA is planned to be updated twice a year. Major updates may include the addition of newly available public RNA-seq datasets, expansion to additional grass species, refinement of manually curated metadata, and correction of reported errors.
+    </p>
+    <p class="lead">
+      Minor bug fixes and corrections may be released as needed.
+    </p>
+    <p class="lead">
+      <strong>Last updated:</strong> 22 June 2026
+    </p>
+  </section>
+
+  <section class="container">
+    <div class="page-title">Contact information</div>
+    <p class="lead">
+      For questions, bug reports, or requests regarding GExA, please contact the GExA development team.
+    </p>
+    <p class="lead">
+      <strong>Contact:</strong> Daisuke Tsugama<br>
+      <strong>E-mail:</strong> tsugama [at] g.ecc.u-tokyo.ac.jp
+    </p>
+  </section>
+
+  <section class="container">
+  <div class="page-title">Publications</div>
+  <p class="lead">
+    If you use GExA in your research, please cite the following publication:
+  </p>
+  <ul class="publication-list">
+    <li>
+      <strong>Grass Expression Atlas (GExA): An interactive gene expression database for grass species</strong><br>
+      Kambara, K., Chen, Q., and Tsugama, D. <em>bioRxiv</em> 2026.03.13.711518; doi: <a href="https://doi.org/10.64898/2026.03.13.711518">https://doi.org/10.64898/2026.03.13.711518</a><br>
+    </li>
+  </ul>
+</div>
+</main>
+
+<footer>
+  This database was constructed in the Tsugama Laboratory
+  (<a href="https://park.itc.u-tokyo.ac.jp/lgpr/index.html">https://park.itc.u-tokyo.ac.jp/lgpr/index.html</a>).
+</footer>
+
+</body>
+</html>

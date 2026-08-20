@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grass Expression Atlas - Download</title>
+
+  <style>
+    body{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header{
+      background: #2c3e50;
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    header h1{
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p{
+      margin: 4px 0 0;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .header-left{ min-width: 0; }
+
+    .top-nav{
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      white-space: nowrap;
+      margin-top: 0;
+    }
+
+    .top-nav a{
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+
+    .top-nav a:hover{
+      text-decoration: underline;
+      opacity: 1;
+    }
+    
+    .top-nav a.current {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .container{
+      max-width: 1100px;
+      margin: 16px auto 40px;
+      padding: 16px 20px 24px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .page-title{
+      margin: 4px 0 6px;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .page-subtitle{
+      margin: 0 0 18px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .plant-card{
+      background: #fafafa;
+      border-radius: 10px;
+      padding: 14px 14px 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .plant-name{
+      font-size: 16px;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    .dl-list{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .dl-item{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 10px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid #eee;
+    }
+
+    .dl-icon{
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #e9f2fb;
+      border: 1px solid #d5e6fb;
+      text-decoration: none;
+    }
+
+    .dl-icon:hover{
+      background: #dcecff;
+    }
+
+    .dl-icon svg{
+      width: 18px;
+      height: 18px;
+      fill: #2b74c8;
+    }
+    
+    /* --- Pearl millet: 3 cultivar icons with labels --- */
+    .pm-multi-icons{
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      flex-wrap: wrap; /* 画面が狭いときに折り返す */
+    }
+
+    .pm-cultivar{
+      width: 64px;                 /* アイコン＋ラベルのブロック幅 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;                    /* アイコンとラベルの間 */
+    }
+
+    .pm-cultivar .dl-icon{
+      flex: 0 0 auto;              /* dl-icon の flex:0 0 36px を無害化 */
+    }
+
+    .pm-cultivar-label{
+      font-size: 11px;
+      font-weight: 800;
+      color: #000;
+      line-height: 1.1;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .dl-text{
+      min-width: 0;
+    }
+
+    .dl-title{
+      margin: 0;
+      font-size: 13px;
+      font-weight: 800;
+      color: #222;
+      line-height: 1.35;
+    }
+
+    .dl-meta{
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.35;
+      word-break: break-all;
+    }
+
+    .note{
+      margin-top: 18px;
+      padding: 12px 14px;
+      background: #fff7e6;
+      border: 1px solid #ffe2ad;
+      border-radius: 10px;
+      color: #6b4a00;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer{
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      margin: 18px 0 16px;
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px){
+      header{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-nav{
+        width: 100%;
+        justify-content: flex-end;
+      }
+      .container{
+        margin: 10px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="header-left">
+    <h1>GExA—Grass Expression Atlas</h1>
+    <p>Download processed gene-level count and TPM expression matrices, sample metadata, and homology-based functional annotations linked to Arabidopsis and rice.</p>
+  </div>
+
+  <nav class="top-nav" aria-label="Primary">
+    <a href="../index.html">Home</a>
+    <a href="../Help/index.html">Help</a>
+    <a class="current" href="index.html">Download</a>
+    <a href="../About/index.html">About</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="page-title">Download</div>
+  <p class="page-subtitle">
+    Click the icon to download each file.<br>
+  </p>
+
+  <div class="grid">
+
+    <!-- Pearl millet -->
+<section class="plant-card" aria-label="Pearl millet downloads">
+  <h2 class="plant-name">Pearl millet</h2>
+
+  <div class="dl-list">
+
+    <!-- Gene count -->
+    <div class="dl-item">
+      <div class="pm-multi-icons">
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_count_data_cv_Tift.csv" download title="Download Tift gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">Tift</div>
+        </div>
+
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_count_data_cv_843B.csv" download title="Download ICMB843 gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">ICMB843</div>
+        </div>
+
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_count_data_cv_06777R.csv" download title="Download ICMR06777 gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">ICMR06777</div>
+        </div>
+      </div>
+
+      <div class="dl-text">
+        <p class="dl-title">Gene count (csv)</p>
+      </div>
+    </div>
+
+    <!-- TPM -->
+    <div class="dl-item">
+      <div class="pm-multi-icons">
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_TPM_data_cv_Tift.csv" download title="Download Tift TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">Tift</div>
+        </div>
+
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_TPM_data_cv_843B.csv" download title="Download ICMB843 TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">ICMB843</div>
+        </div>
+
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_TPM_data_cv_06777R.csv" download title="Download ICMR06777 TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">ICMR06777</div>
+        </div>
+      </div>
+
+      <div class="dl-text">
+        <p class="dl-title">TPM (csv)</p>
+      </div>
+    </div>
+
+    <!-- Rice/Arabidopsis annotation -->
+    <div class="dl-item">
+      <div class="pm-multi-icons">
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_annotation_cv_Tift.tsv" download title="Download Tift Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">Tift</div>
+        </div>
+
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_annotation_cv_843B.tsv" download title="Download ICMB843 Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">ICMB843</div>
+        </div>
+
+        <div class="pm-cultivar">
+          <a class="dl-icon" href="files/Pearl_millet_annotation_cv_06777R.tsv" download title="Download ICMR06777 Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="pm-cultivar-label">ICMR06777</div>
+        </div>
+      </div>
+
+      <div class="dl-text">
+        <p class="dl-title">Rice/Arabidopsis annotation (tsv)</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Proso millet -->
+    <section class="plant-card" aria-label="Proso millet downloads">
+      <h2 class="plant-name">Proso millet</h2>
+      <div class="dl-list">
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Proso_millet_count_data.csv" download title="Download gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Gene count (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Proso_millet_TPM_data.csv" download title="Download TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">TPM (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Proso_millet_annotation.tsv" download title="Download Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Rice/Arabidopsis annotation (tsv)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Finger millet -->
+    <section class="plant-card" aria-label="Finger millet downloads">
+      <h2 class="plant-name">Finger millet</h2>
+      <div class="dl-list">
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Finger_millet_count_data.csv" download title="Download gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Gene count (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Finger_millet_TPM_data.csv" download title="Download TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">TPM (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Finger_millet_annotation.tsv" download title="Download Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Rice/Arabidopsis annotation (tsv)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foxtail millet -->
+    <section class="plant-card" aria-label="Foxtail millet downloads">
+      <h2 class="plant-name">Foxtail millet</h2>
+      <div class="dl-list">
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Foxtail_millet_count_data.csv" download title="Download gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Gene count (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Foxtail_millet_TPM_data.csv" download title="Download TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">TPM (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Foxtail_millet_annotation.tsv" download title="Download Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Rice/Arabidopsis annotation (tsv)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barley -->
+    <section class="plant-card" aria-label="Barley downloads">
+      <h2 class="plant-name">Barley</h2>
+      <div class="dl-list">
+      <div class="dl-item">
+          <a class="dl-icon" href="files/Barley_count_data.csv" download title="Download gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Gene count (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Barley_TPM_data.csv" download title="Download TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">TPM (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Barley_annotation.tsv" download title="Download Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Rice/Arabidopsis annotation (tsv)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sorghum -->
+    <section class="plant-card" aria-label="Sorghum downloads">
+      <h2 class="plant-name">Sorghum</h2>
+      <div class="dl-list">
+      <div class="dl-item">
+          <a class="dl-icon" href="files/Sorghum_count_data.csv" download title="Download gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Gene count (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Sorghum_TPM_data.csv" download title="Download TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">TPM (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Sorghum_annotation.tsv" download title="Download Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Rice/Arabidopsis annotation (tsv)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Rice -->
+    <section class="plant-card" aria-label="Rice downloads">
+      <h2 class="plant-name">Rice</h2>
+      <div class="dl-list">
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Rice_count_data.csv" download title="Download gene count (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Gene count (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Rice_TPM_data.csv" download title="Download TPM (CSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">TPM (csv)</p>
+          </div>
+        </div>
+        <div class="dl-item">
+          <a class="dl-icon" href="files/Rice_annotation.tsv" download title="Download Rice/Arabidopsis annotation (TSV)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/></svg>
+          </a>
+          <div class="dl-text">
+            <p class="dl-title">Rice/Arabidopsis annotation (tsv)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  </div>
+<footer>
+This database was constructed in the Tsugama Laboratory (<a href="https://park.itc.u-tokyo.ac.jp/lgpr/index.html">https://park.itc.u-tokyo.ac.jp/lgpr/index.html</a>).
+</footer>
+</body>
+</html>
