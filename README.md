@@ -7,12 +7,9 @@ This repository contains the source code for **GExA (Grass Expression Atlas, htt
 This repository includes the source files used to build and operate the GExA website, including:
 
 * HTML, CSS, and JavaScript files
-* Server-side scripts
-* Shell scripts
 * Shard files used by the web application
-* Other source and configuration files required for GExA
 
-Large tabular data files, including expression matrices and other `.csv` or `.tsv` files, are not included in this repository.
+Large data files, including expression matrices and annotation files, are not included in this repository.
 
 ## GExA
 
@@ -27,7 +24,6 @@ Datasets used in GExA are distributed separately from this source-code repositor
 ## Citation
 
 If you use GExA in your research, please cite the GExA publication.
+Grass Expression Atlas (GExA): An interactive gene expression database for grass species
+Kambara, K., Chen, Q., and Tsugama, D. bioRxiv 2026.03.13.711518; doi: https://doi.org/10.64898/2026.03.13.711518
 
-## Contact
-
-For questions or feedback, please open an issue in this repository.
