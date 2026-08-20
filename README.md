@@ -1,6 +1,6 @@
 # GExA: Grass Expression Atlas
 
-This repository contains the source code for **GExA (Grass Expression Atlas, https://www.gexa.anesc.u-tokyo.ac.jp/)**, a web-based transcriptome database for exploring gene expression patterns in grass species.
+The source code for **GExA (Grass Expression Atlas, https://www.gexa.anesc.u-tokyo.ac.jp/)**, a web-based transcriptome database for exploring gene expression patterns in grass species.
 
 ## Contents
 
