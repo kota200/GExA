@@ -21,9 +21,3 @@ Website: https://www.gexa.anesc.u-tokyo.ac.jp/
 
 Datasets used in GExA are distributed separately from this source-code repository in https://www.gexa.anesc.u-tokyo.ac.jp/Download/ or https://doi.org/10.6084/m9.figshare.31669273.
 
-## Citation
-
-If you use GExA in your research, please cite the GExA publication.
-Grass Expression Atlas (GExA): An interactive gene expression database for grass species
-Kambara, K., Chen, Q., and Tsugama, D. bioRxiv 2026.03.13.711518; doi: https://doi.org/10.64898/2026.03.13.711518
-
