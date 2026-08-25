@@ -195,6 +195,11 @@
       font-style: italic;
     }
 
+    .database-summary-table .reference-source {
+      min-width: 260px;
+      text-align: left;
+    }
+
     .table-note {
       margin: 10px 0 0;
       color: #666;
@@ -357,6 +362,7 @@
           <th scope="col">Total BioProjects</th>
           <th scope="col">Number of genes</th>
           <th scope="col">Number of reference genomes</th>
+          <th scope="col">Reference genome source</th>
         </tr>
         </thead>
         <tbody>
@@ -372,6 +378,7 @@
 ICMB 843: 38,069<br>
 ICMR 06777: 35,036</td>
           <td>3</td>
+          <td class="reference-source"><a href="https://doi.org/10.1038/s42003-023-05258-3" target="_blank" rel="noopener noreferrer">Ramu et al. (2023), DOI: 10.1038/s42003-023-05258-3</a></td>
         </tr>
         <tr>
           <th scope="row">Foxtail millet</th>
@@ -381,8 +388,9 @@ ICMR 06777: 35,036</td>
           <td>1,241</td>
           <td>1,470</td>
           <td>211</td>
-          <td>30,123</td>
-          <td>1</td>
+          <td>Yugu1: 30,123<br>Yugu1 (T2T): 43,310</td>
+          <td>2</td>
+          <td class="reference-source">Yugu1: <a href="https://doi.org/10.1038/nbt.2196" target="_blank" rel="noopener noreferrer">Bennetzen et al. (2012), DOI: 10.1038/nbt.2196</a><br>Yugu1 (T2T): <a href="https://doi.org/10.1016/j.molp.2023.12.017" target="_blank" rel="noopener noreferrer">He et al. (2024), DOI: 10.1016/j.molp.2023.12.017</a>; <a href="http://www.setariadb.com/" target="_blank" rel="noopener noreferrer">Setaria DB</a></td>
         </tr>
         <tr>
           <th scope="row">Proso millet</th>
@@ -394,6 +402,7 @@ ICMR 06777: 35,036</td>
           <td>27</td>
           <td>63,678</td>
           <td>1</td>
+          <td class="reference-source"><a href="https://doi.org/10.1038/s41597-024-03489-5" target="_blank" rel="noopener noreferrer">Wang et al. (2024), DOI: 10.1038/s41597-024-03489-5</a></td>
         </tr>
         <tr>
           <th scope="row">Finger millet</th>
@@ -405,6 +414,7 @@ ICMR 06777: 35,036</td>
           <td>20</td>
           <td>48,836</td>
           <td>1</td>
+          <td class="reference-source"><a href="https://doi.org/10.1038/s41467-023-38915-6" target="_blank" rel="noopener noreferrer">Devos et al. (2023), DOI: 10.1038/s41467-023-38915-6</a></td>
         </tr>
         <tr>
           <th scope="row">Sorghum</th>
@@ -416,6 +426,7 @@ ICMR 06777: 35,036</td>
           <td>114</td>
           <td>34,118</td>
           <td>1</td>
+          <td class="reference-source"><a href="https://doi.org/10.1038/nature07723" target="_blank" rel="noopener noreferrer">Paterson et al. (2009), DOI: 10.1038/nature07723</a></td>
         </tr>
         <tr>
           <th scope="row">Barley</th>
@@ -427,6 +438,7 @@ ICMR 06777: 35,036</td>
           <td>27</td>
           <td>35,826</td>
           <td>1</td>
+          <td class="reference-source"><a href="https://doi.org/10.1111/pbi.13816" target="_blank" rel="noopener noreferrer">Navr&aacute;tilov&aacute; et al. (2022), DOI: 10.1111/pbi.13816</a></td>
         </tr>
         <tr>
           <th scope="row">Rice</th>
@@ -438,6 +450,7 @@ ICMR 06777: 35,036</td>
           <td>15</td>
           <td>55,986</td>
           <td>1</td>
+          <td class="reference-source"><a href="https://doi.org/10.1186/1939-8433-6-4" target="_blank" rel="noopener noreferrer">Kawahara et al. (2013), DOI: 10.1186/1939-8433-6-4</a></td>
         </tr>
         </tbody>
       </table>
@@ -476,7 +489,7 @@ ICMR 06777: 35,036</td>
       Minor bug fixes and corrections may be released as needed.
     </p>
     <p class="lead">
-      <strong>Last updated:</strong> 22 June 2026
+      <strong>Last updated:</strong> 25 August 2026 &mdash; Updated the foxtail millet reference genome to the Yugu1 (T2T) assembly.
     </p>
   </section>
 
