@@ -494,6 +494,7 @@ input[type="checkbox"] { margin: 0; }
       <label for="ref-genome">Reference genome cultivar</label>
       <select id="ref-genome">
         <option value="ref">Yugu1</option>
+        <option value="t2t">Yugu1 (T2T)</option>
       </select>
     </div>
 
@@ -508,9 +509,9 @@ input[type="checkbox"] { margin: 0; }
       </div>
 
       <div class="small-note">
-        You can input multiple Gene IDs separated by spaces/commas (e.g., <code>QOZ80XXXX QOZ80YYYY</code>).
+        You can input multiple Gene IDs separated by spaces/commas (e.g., <code>LOCXXXX LOCYYYY</code>).
         You can also search by gene annotation (Arabidopsis / rice). Matched genes will be plotted all at once (up to 500).
-        Regex is supported via this checkbox or <code>/.../flags</code> form (e.g., <code>/^QOZ80.*0000010/i</code>).
+        Regex is supported via this checkbox or <code>/.../flags</code> form (e.g., <code>/^LOC.*0000010/i</code>).
       </div>
       <div class="anno-hit-box" id="anno-hit-box" style="display:none;">
         <label>Matched genes</label>
@@ -619,7 +620,7 @@ This database was constructed in the Tsugama Laboratory (<a href="https://park.i
 
   function getSiteRootPath() {
     const p = window.location.pathname || "/";
-    const markers = ["/SB/"];
+    const markers = ["/SI/", "/SI_T2T/"];
     for (const m of markers) {
       const i = p.indexOf(m);
       if (i !== -1) return p.slice(0, i + 1); // keep trailing "/"
@@ -629,12 +630,16 @@ This database was constructed in the Tsugama Laboratory (<a href="https://park.i
   }
 
   function detectCurrentGenome() {
+    const p = window.location.pathname || "";
+    if (p.includes("/SI_T2T/")) return "t2t";
+    if (p.includes("/SI/")) return "ref";
     return "ref";
   }
 
   function getGenomePagePath(genome) {
-    // SB has a single reference genome page.
-    return window.location.pathname || "";
+    const root = getSiteRootPath();
+    if (genome === "t2t") return root + "SI_T2T/SI_T2T.html";
+    return root + "SI/SI.html";
   }
 
   function setupReferenceGenomeSelector() {
